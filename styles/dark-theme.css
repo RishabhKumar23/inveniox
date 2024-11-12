@@ -57,7 +57,8 @@ body {
 }
 
 .editor-inner {
-  background: #0b1527;
+  /* background: #0b1527; */
+  background: #111; /* Editor Color Change to black*/
   position: relative;
 }
 
