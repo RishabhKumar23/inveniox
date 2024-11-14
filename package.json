@@ -13,7 +13,7 @@
     "@clerk/themes": "^2.1.43",
     "@lexical/react": "^0.16.1",
     "@liveblocks/client": "^2.11.0",
-    "@liveblocks/node": "^2.11.1",
+    "@liveblocks/node": "^2.11.0",
     "@liveblocks/react": "^2.11.0",
     "@liveblocks/react-lexical": "^2.11.0",
     "@liveblocks/react-ui": "^2.11.0",
