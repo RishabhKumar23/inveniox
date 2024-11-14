@@ -27,7 +27,7 @@ export const createDocument = async ({ userId, email }: CreateDocumentParams) =>
 
         revalidatePath('/');
 
-        return parseStringify()
+        return parseStringify(room);
     } catch (error) {
         console.log(`Error happened while creating a room: ${error}`);
     }

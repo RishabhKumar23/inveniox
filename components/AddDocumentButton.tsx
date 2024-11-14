@@ -10,7 +10,8 @@ const AddDocumentButton = ({ userId, email }: AddDocumentButtonProps) => {
 
     // to add document
     const addDocumentHandler = async () => {
-        console.log("button is clicked!")
+        console.log("button is clicked!");
+        console.log("Liveblocks Secret Key:", process.env.LIVEBLOCKS_SECRET_KEY);
         try {
             const room = await createDocument({ userId, email });
 
