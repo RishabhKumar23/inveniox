@@ -1,4 +1,5 @@
-'use client'
+'use server'
+
 import { nanoid } from 'nanoid'
 import { liveblocks } from '../liveblocks';
 import { revalidatePath } from 'next/cache';
@@ -25,7 +26,7 @@ export const createDocument = async ({ userId, email }: CreateDocumentParams) =>
             defaultAccesses: []
         });
 
-        revalidatePath('/');
+        revalidatePath("/");
 
         return parseStringify(room);
     } catch (error) {
