@@ -1,4 +1,4 @@
-'use server'
+'use server';
 
 import { nanoid } from 'nanoid'
 import { liveblocks } from '../liveblocks';
@@ -23,7 +23,7 @@ export const createDocument = async ({ userId, email }: CreateDocumentParams) =>
         const room = await liveblocks.createRoom(roomId, {
             metadata,
             usersAccesses,
-            defaultAccesses: []
+            defaultAccesses: ['room:write']
         });
 
         revalidatePath("/");

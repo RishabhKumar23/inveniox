@@ -10,6 +10,7 @@ import {
     SignedOut,
     UserButton
 } from '@clerk/nextjs'
+import ActiveCollaborators from './ActiveCollaborators'
 
 const CollaborativeRoom = ({ children }: { children: ReactNode }) => {
     return (
@@ -17,15 +18,20 @@ const CollaborativeRoom = ({ children }: { children: ReactNode }) => {
             <ClientSideSuspense fallback={<Loader />}>
                 <div className='collaborative-room'>
                     <Header>
+                        {/* for share button  */}
                         <div className='flex w-fit items-center justify-center gap-2'>
                             <p className='document-title'>Share</p>
                         </div>
-                        <SignedOut>
-                            <SignInButton />
-                        </SignedOut>
-                        <SignedIn>
-                            <UserButton />
-                        </SignedIn>
+                        {/* */}
+                        <div className='felx w-full flex-1 justify-end gap-2 sm:gap-3'>
+                            <ActiveCollaborators />
+                            <SignedOut>
+                                <SignInButton />
+                            </SignedOut>
+                            <SignedIn>
+                                <UserButton />
+                            </SignedIn>
+                        </div>
                     </Header>
                     <Editor />
                 </div>
