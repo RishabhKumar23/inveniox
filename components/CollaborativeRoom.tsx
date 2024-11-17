@@ -13,26 +13,24 @@ import {
 
 const CollaborativeRoom = ({ children }: { children: ReactNode }) => {
     return (
-        <div>
-            <RoomProvider id="my-room">
-                <ClientSideSuspense fallback={<Loader />}>
-                    <div className='collaborative-room'>
-                        <Header>
-                            <div className='flex w-fit items-center justify-center gap-2'>
-                                <p className='document-title'>Share</p>
-                            </div>
-                            <SignedOut>
-                                <SignInButton />
-                            </SignedOut>
-                            <SignedIn>
-                                <UserButton />
-                            </SignedIn>
-                        </Header>
-                        <Editor />
-                    </div>
-                </ClientSideSuspense>
-            </RoomProvider>
-        </div>
+        <RoomProvider id="my-room">
+            <ClientSideSuspense fallback={<Loader />}>
+                <div className='collaborative-room'>
+                    <Header>
+                        <div className='flex w-fit items-center justify-center gap-2'>
+                            <p className='document-title'>Share</p>
+                        </div>
+                        <SignedOut>
+                            <SignInButton />
+                        </SignedOut>
+                        <SignedIn>
+                            <UserButton />
+                        </SignedIn>
+                    </Header>
+                    <Editor />
+                </div>
+            </ClientSideSuspense>
+        </RoomProvider>
     )
 }
 
