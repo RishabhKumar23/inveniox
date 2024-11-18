@@ -23,7 +23,7 @@ const CollaborativeRoom = ({roomId, roomMetadata}: CollaborativeRoomProps) => {
                             <p className='document-title'>Share</p>
                         </div>
                         {/* */}
-                        <div className='felx w-full flex-1 justify-end gap-2 sm:gap-3'>
+                        <div className='flex w-full flex-1 justify-end gap-2 sm:gap-3'>
                             <ActiveCollaborators />
                             <SignedOut>
                                 <SignInButton />
