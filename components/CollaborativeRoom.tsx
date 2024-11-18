@@ -12,9 +12,9 @@ import {
 } from '@clerk/nextjs'
 import ActiveCollaborators from './ActiveCollaborators'
 
-const CollaborativeRoom = ({ children }: { children: ReactNode }) => {
+const CollaborativeRoom = ({roomId, roomMetadata}: CollaborativeRoomProps) => {
     return (
-        <RoomProvider id="my-room">
+        <RoomProvider id={roomId}>
             <ClientSideSuspense fallback={<Loader />}>
                 <div className='collaborative-room'>
                     <Header>

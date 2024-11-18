@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const Header = ({ children, className }: HeaderProps) => {
     return (
-        <div className={cn('header', className)}>
+        <div className={cn('header bg-black', className) }>
             <Link href='/' className="md: flex-1">
                 <Image
                     src="/assets/icons/InvenioX.svg"

@@ -9,21 +9,19 @@ import { getClerkUsers } from '@/lib/actions/user.action';
 
 const Provider = ({ children }: { children: ReactNode }) => {
     return (
-        <div>
-            <LiveblocksProvider
-                authEndpoint="/api/liveblocks-auth">
-                resolverUsers={async ({ userIds }) => {
-                    const users = await getClerkUsers({ userIds });
-
-                    return users;
-                }}
-                {/* <RoomProvider id="my-room"> */}
-                <ClientSideSuspense fallback={<Loader />}>
-                    {children}
-                </ClientSideSuspense>
-                {/* </RoomProvider> */}
-            </LiveblocksProvider>
-        </div>
+        <LiveblocksProvider
+            authEndpoint="/api/liveblocks-auth"
+            resolveUsers={async ({ userIds }) => {
+                const users = await getClerkUsers({ userIds });
+                return users;
+            }}
+        >
+            {/* <RoomProvider id="my-room"> */}
+            <ClientSideSuspense fallback={<Loader />}>
+                {children}
+            </ClientSideSuspense>
+            {/* </RoomProvider> */}
+        </LiveblocksProvider>
     )
 }
 

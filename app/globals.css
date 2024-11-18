@@ -92,7 +92,7 @@
   }
 
   .header {
-    @apply min-h-[92px] min-w-full flex-nowrap bg-dark-100 flex w-full items-center justify-between gap-2 px-4;
+    @apply min-h-[92px] min-w-full flex-nowrap bg-black flex w-full items-center justify-between gap-2 px-4 border-b-2;
   }
 
   .document-list-container {
