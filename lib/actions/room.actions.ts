@@ -40,11 +40,13 @@ export const getDocument = async ({ roomId, userId }: { roomId: string; userId: 
     try {
         const room = await liveblocks.getRoom(roomId);
 
-        const hasAccess = Object.keys(room.usersAccesses).includes(userId);
+        //TODO - Bring this back when we have the permissions system in place
 
-        if (!hasAccess) {
-            throw new Error("You do not have access to this document");
-        }
+        // const hasAccess = Object.keys(room.usersAccesses).includes(userId);
+
+        // if (!hasAccess) {
+        //     throw new Error("You do not have access to this document");
+        // }
 
         return parseStringify(room);
     } catch (error) {
