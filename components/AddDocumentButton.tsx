@@ -10,8 +10,8 @@ const AddDocumentButton = ({ userId, email }: AddDocumentButtonProps) => {
 
     // to add document
     const addDocumentHandler = async () => {
-        console.log("button is clicked!");
-        console.log("Liveblocks Secret Key:", process.env.LIVEBLOCKS_SECRET_KEY);
+        // console.log("button is clicked!");
+        // console.log("Liveblocks Secret Key:", process.env.LIVEBLOCKS_SECRET_KEY);
         try {
             const room = await createDocument({ userId, email });
 
@@ -23,7 +23,7 @@ const AddDocumentButton = ({ userId, email }: AddDocumentButtonProps) => {
     }
 
     return (
-        <div className='m-5 bg-blue-200 p-10'>
+        <div className='m-5 bg-black p-1'>
             <Button
                 type='submit'
                 onClick={addDocumentHandler}
@@ -35,7 +35,7 @@ const AddDocumentButton = ({ userId, email }: AddDocumentButtonProps) => {
                     height={25}
                     alt={'add icon'}
                 />
-                <p className='hidden sm:block'>Create a blank document</p>
+                <p className='hidden sm:block'>Create document</p>
             </Button>
         </div>
     )

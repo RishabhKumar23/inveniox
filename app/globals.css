@@ -100,11 +100,11 @@
   }
 
   .document-list-title {
-    @apply max-w-[730px] items-end flex w-full justify-between;
+    @apply max-w-[730px] items-end flex justify-center;
   }
 
   .document-list-item {
-    @apply flex items-center justify-between gap-4 rounded-lg bg-doc bg-cover p-5 shadow-xl;
+    @apply flex items-center justify-between gap-4 rounded-lg bg-[#222122] bg-cover p-5 shadow-xl border-2 hover:bg-[#161616] relative transition-transform transform hover:scale-105 hover:z-10 hover:mt-2;
   }
 
   .document-list-empty {
@@ -162,7 +162,7 @@
   }
 
   .document-ul {
-    @apply flex w-full max-w-[730px] flex-col gap-5;
+    @apply flex w-full max-w-[900px] flex-col gap-5;
   }
 
   /* ======================== CollaborativeRoom */
