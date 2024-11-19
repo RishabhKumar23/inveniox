@@ -9,14 +9,14 @@ export const getClerkUsers = async ({ userIds }: { userIds: string[] }) => {
             emailAddress: userIds,
         });
 
-        const users = data.map((user) => ({
+        const users = data.map((user: { id: any; firstName: any; lastName: any; emailAddress: { emailAddress: any; }[]; imageUrl: any; }) => ({
             id: user.id,
             name: `${user.firstName} ${user.lastName}`,
             email: user.emailAddress[0].emailAddress,
             avatar: user.imageUrl,
         }));
 
-        const sortUsers = userIds.map((email) => users.find((user) =>
+        const sortUsers = userIds.map((email) => users.find((user: { email: string; }) =>
             user.email === email
         ));
 
@@ -25,4 +25,7 @@ export const getClerkUsers = async ({ userIds }: { userIds: string[] }) => {
     } catch (error) {
         console.log(`Error fetching users: ${error}`);
     }
+    
+    console.log("type of clerkClient",typeof clerkClient); // Should print 'object'
+
 }

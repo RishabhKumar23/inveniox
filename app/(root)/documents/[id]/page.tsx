@@ -5,7 +5,16 @@ import { currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import React from 'react';
 
-const Document = async ({ params: { id } }: SearchParamProps) => {
+interface SearchParamProps {
+    params: {
+        id: string;
+    };
+}
+
+const Document = async ({ params }: SearchParamProps) => {
+    // Wait for the dynamic parameter
+    const { id } = await params; // Now safely access 'id'
+
     // Retrieve the currently logged-in Clerk user using Clerk's server-side API
     const clerkUser = await currentUser();
 
@@ -31,11 +40,11 @@ const Document = async ({ params: { id } }: SearchParamProps) => {
     // Map over the fetched users to enrich them with their access level (editor/viewer)
     const userData = Array.isArray(users)
         ? users.map((user: User) => ({
-              ...user, // Spread the user object
-              userType: room.usersAccesses[user.email]?.includes('room:write')
-                  ? 'editor' // Assign 'editor' role if the user has 'write' access
-                  : 'viewer', // Otherwise, assign 'viewer' role
-          }))
+            ...user, // Spread the user object
+            userType: room.usersAccesses[user.email]?.includes('room:write')
+                ? 'editor' // Assign 'editor' role if the user has 'write' access
+                : 'viewer', // Otherwise, assign 'viewer' role
+        }))
         : [];
 
     // Determine the current user's role in the room (editor or viewer)
