@@ -1,19 +1,21 @@
 'use server';
 
-import { clerkClient } from "@clerk/nextjs/server";
 import { parseStringify } from "../utils";
 import { liveblocks } from "../liveblocks";
+import { clerkClient } from "@clerk/nextjs/server";
 
 export const getClerkUsers = async ({ userIds }: { userIds: string[] }) => {
     try {
-        const { data } = await clerkClient.users.getUserList({
-            emailAddress: userIds,
+        const { data } = await (await clerkClient()).users.getUserList({
+            emailAddress: userIds
         });
 
-        const users = data.map((user: { id: any; firstName: any; lastName: any; emailAddress: { emailAddress: any; }[]; imageUrl: any; }) => ({
+        console.log("Data", data);
+
+        const users = data.map((user) => ({
             id: user.id,
             name: `${user.firstName} ${user.lastName}`,
-            email: user.emailAddress[0].emailAddress,
+            email: user.emailAddresses[0].emailAddress,
             avatar: user.imageUrl,
         }));
 
@@ -26,9 +28,7 @@ export const getClerkUsers = async ({ userIds }: { userIds: string[] }) => {
     } catch (error) {
         console.log(`Error fetching users: ${error}`);
     }
-
-    console.log("type of clerkClient", typeof clerkClient); // Should print 'object'
-
+    // console.log("type of clerkClient", typeof clerkClient); // Should print 'object'
 }
 
 export const getDocumentUsers = async ({ roomId, currentUser, text }: { roomId: string, currentUser: string, text: string }) => {
