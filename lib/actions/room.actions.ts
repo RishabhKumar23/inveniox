@@ -6,6 +6,8 @@ import { revalidatePath } from 'next/cache';
 import { getAccessType, parseStringify } from '../utils';
 import { redirect } from 'next/navigation';
 
+//NOTE - All User Actions
+
 // To create Document
 export const createDocument = async ({ userId, email }: CreateDocumentParams) => {
     const roomId = nanoid();
@@ -41,7 +43,7 @@ export const getDocument = async ({ roomId, userId }: { roomId: string; userId: 
     try {
         const room = await liveblocks.getRoom(roomId);
 
-        //TODO - Bring this back when we have the permissions system in place
+        // Bring this back when we have the permissions system in place
         const hasAccess = Object.keys(room.usersAccesses).includes(userId);
 
         if (!hasAccess) {
@@ -119,6 +121,7 @@ export const updateDocumentAccess = async ({ roomId, email, userType, updatedBy 
     }
 }
 
+// To remove the collaborator
 export const removeCollaborator = async ({ roomId, email }: { roomId: string, email: string }) => {
     try {
         const room = await liveblocks.getRoom(roomId)
@@ -142,12 +145,13 @@ export const removeCollaborator = async ({ roomId, email }: { roomId: string, em
     }
 }
 
-// export const deleteDocument = async (roomId: string) => {
-//     try {
-//         await liveblocks.deleteRoom(roomId);
-//         revalidatePath('/');
-//         redirect('/');
-//     } catch (error) {
-//         console.log(`Error happened while deleting a room: ${error}`);
-//     }
-// }
+// To delete the file
+export const deleteDocument = async (roomId: string) => {
+    try {
+        await liveblocks.deleteRoom(roomId);
+        revalidatePath('/');
+        redirect('/');
+    } catch (error) {
+        console.log(`Error happened while deleting a room: ${error}`);
+    }
+}
