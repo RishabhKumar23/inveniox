@@ -48,7 +48,8 @@ const Home = async () => {
             </div>
           </div>
           <ul className='document-ul'>
-            {roomDocuments.data.map(({ id, metadata, createdAt }: any) => {
+            {roomDocuments.data.map(({ id, metadata, createdAt }: { id: string, metadata: Metadatas, createdAt: string }) => {
+              console.log(roomDocuments.data[0]);
               return (
                 <li key={id} className='document-list-item '>
                   <Link
